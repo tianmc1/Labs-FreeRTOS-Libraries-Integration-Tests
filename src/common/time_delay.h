@@ -20,40 +20,16 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+#ifndef _TIME_DELAY_H_
+#define _TIME_DELAY_H_
+
+#include <stdint.h>
+
 /**
- * @file qualification_test.c
- * @brief Implements the entry function for LTS qualification test.
+ * @brief Delay function to wait for a specific amount of time.
+ *
+ * @param[in] delayMs Delay in milliseconds.
  */
-#include "test_execution_config.h"
+typedef void (* TimeDelayFunc_t)( uint32_t delayMs );
 
-#if ( TRANSPORT_INTERFACE_TEST_ENABLED == 1 )
-    #include "transport_interface_test.h"
-#endif
-
-#if ( MQTT_TEST_ENABLED == 1 )
-    #include "mqtt_test.h"
-#endif
-
-#if ( OTA_PAL_TEST_ENABLED == 1 )
-    #include "ota_pal_test.h"
-#endif
-
-
-/*-----------------------------------------------------------*/
-
-void RunQualificationTest( void )
-{
-    #if ( TRANSPORT_INTERFACE_TEST_ENABLED == 1 )
-        RunTransportInterfaceTest();
-    #endif
-
-    #if ( MQTT_TEST_ENABLED == 1 )
-        RunMqttTest();
-    #endif
-
-    #if ( OTA_PAL_TEST_ENABLED == 1 )
-        RunOtaPalTest();
-    #endif
-}
-
-/*-----------------------------------------------------------*/
+#endif /* _TIME_DELAY_H_ */
